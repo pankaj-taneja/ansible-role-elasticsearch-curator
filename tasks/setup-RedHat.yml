@@ -1,0 +1,14 @@
+---
+- name: Ensure pip is installed.
+  yum: name=python-pip state=present enablerepo=epel
+
+#- name: Add Elasticsearch Curator GPG key.
+#  rpm_key:
+#    key: https://packages.elastic.co/GPG-KEY-elasticsearch
+#    state: present
+
+- name: Add Elasticsearch curator repository.
+  template:
+    src: elasticsearch-curator.repo.j2
+    dest: /etc/yum.repos.d/elasticsearch-curator.repo
+    mode: 0644
