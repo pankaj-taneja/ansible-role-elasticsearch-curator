@@ -28,3 +28,10 @@
     weekday: "{{ item.weekday | default('*') }}"
     month: "{{ item.month | default('*') }}"
   with_items: "{{ elasticsearch_curator_cron_jobs }}"
+
+- name: print vars
+  debug:
+    msg: "{{ item }}"
+  with_items:
+    - "{{ elasticsearch_curator__es_ip }}"
+    - "{{ elasticsearch_curator__es_port }}"

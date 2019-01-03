@@ -1,0 +1,4 @@
+---
+
+elasticsearch_curator__es_ip: '{{ elasticsearch__ip}}'
+elasticsearch_curator__es_port: '{{ elasticsearch__port}}'

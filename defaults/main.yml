@@ -1,18 +1,22 @@
 ---
+
+elasticsearch_curator__es_ip: 'localhost'
+elasticsearch_curator__es_port: '9200'
+
 elasticsearch_curator_cron_jobs:
   - {
     name: "Delete old elasticsearch indices.",
     job: "/usr/local/bin/curator delete indices --older-than 30 --time-unit days --timestring '\\%Y.\\%m.\\%d'",
     minute: 0,
     hour: 1,
-    host: "{{ elasticsearch_host }}",
-    port: "{{ elasticsearch_port }}"
+    host: "{{ elasticsearch_curator__es_ip }}",
+    port: "{{ elasticsearch_curator__es_port }}"
   }
   - {
     name: "Close old elasticsearch indices.",
     job: "/usr/local/bin/curator close indices --older-than 14 --time-unit days --timestring '\\%Y.\\%m.\\%d'",
     minute: 30,
     hour: 1,
-    host: "{{ elasticsearch_host }}",
-    port: "{{ elasticsearch_port }}"
+    host: "{{ elasticsearch_curator__es_ip }}",
+    port: "{{ elasticsearch_curator__es_port }}"
   }
