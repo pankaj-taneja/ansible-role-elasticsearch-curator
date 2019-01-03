@@ -5,10 +5,16 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
+- name: copy package on source
+  copy: 
+   src: 'elasticsearch-curator-5.6.0-1.x86_64.rpm'
+   dest: /elasticsearch-curator-5.6.0-1.x86_64.rpm
+
+
 - name: Install Elasticsearch Curator and required dependencies.
   package:
     name:
-      - elasticsearch-curator
+      - /elasticsearch-curator-5.6.0-1.x86_64.rpm
       - python-argparse
     state: present
 
